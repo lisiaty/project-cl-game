@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+	<meta charset="utf8">
+	<title>Gra w kulki</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+	<link href="style/main.css" rel="stylesheet">
+	<script src="js/modernizr.js"></script>
+	<script>
+		Modernizr.load([
+			{
+				load: "http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js",
+				complete: function () {
+					if(!window.jQuery){
+						Modernizr.load("js/jquery.js");
+					}
+				}
+			},
+			"js/ui.js",
+			{
+			load : "js/game.js",
+			complete: function(){
+				$(function(){
+					var game = new BubbleShoot.Game();
+					game.init();
+				})
+			}
+		}]);
+	</script>
+</head>
+<body>
+  <div id="page">
+	  <div id="topBar"></div>
+	  <div id="game"></div>
+	  <div id="footerBar"></div>
+	  <div id="startGame" class="dialog">
+		  <div id="startGameMessage">
+			  <h2>Rozpocznij nową grę</h2>
+		  </div>
+		  <div class="butStartGame button">
+			  Nowa gra
+		  </div>
+	  </div>
+  </div>
+</body>
+</html>
