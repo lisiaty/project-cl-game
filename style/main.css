@@ -1,18 +1,17 @@
-body
-{
+body {
 	margin: 0;
 	font-family: 'Roboto', sans-serif;
 }
-#page
-{
+
+#page {
 	position: absolute;
 	left: 0;
 	top: 0;
 	width: 1000px;
 	height: 738px;
 }
-#topBar
-{
+
+#topBar {
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -21,8 +20,8 @@ body
 	background-color: #C7C9BE;
 	color: #fff;
 }
-#game
-{
+
+#game {
 	position: absolute;
 	left: 0px;
 	top: 70px;
@@ -32,6 +31,15 @@ body
 	clip: auto;
 	overflow: hidden;
 }
+
+#board {
+	position: absolute;
+	left: 120px;
+	top: 0;
+	width: 760px;
+	height: 620px;
+}
+
 #footerBar
 {
 	position: absolute;

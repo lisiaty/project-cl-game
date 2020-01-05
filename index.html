@@ -5,11 +5,12 @@
 	<title>Gra w kulki</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 	<link href="style/main.css" rel="stylesheet">
+	<link href="style/game.css" rel="stylesheet">
 	<script src="js/modernizr.js"></script>
 	<script>
 		Modernizr.load([
 			{
-				load: "http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js",
+				load: "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js",
 				complete: function () {
 					if(!window.jQuery){
 						Modernizr.load("js/jquery.js");
@@ -17,6 +18,7 @@
 				}
 			},
 			"js/ui.js",
+			"js/bubble.js",
 			{
 			load : "js/game.js",
 			complete: function(){
@@ -31,7 +33,9 @@
 <body>
   <div id="page">
 	  <div id="topBar"></div>
-	  <div id="game"></div>
+	  <div id="game">
+		  <div id="board"></div>
+	  </div>
 	  <div id="footerBar"></div>
 	  <div id="startGame" class="dialog">
 		  <div id="startGameMessage">
