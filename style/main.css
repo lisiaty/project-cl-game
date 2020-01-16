@@ -95,3 +95,15 @@ body {
 {
 	display: block;
 }
+
+#bubbles_remaining
+{
+	position: absolute;
+	left: 479px;
+	top: 520px;
+	width: 50px;
+	font-size: 26px;
+	font-weight: bold;
+	color: #DC4E00;
+	text-align: center;
+}

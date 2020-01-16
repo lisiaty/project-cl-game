@@ -5,7 +5,21 @@ BubbleShoot.Bubble = (function($){
 		this.getType = function() {return type;};
 		this.getSprite = function(){ return sprite;};
 		this.getCol = function() {return col;};
+		this.setCol = function(colIn) {col = colIn;};// relatywna pozycja na planszy
 		this.getRow = function() {return row;};
+		this.setRow = function(rowIn) {row = rowIn;};// relatywna pozycja na planszy
+		//metoda dająca koordynaty kulki
+		this.getCoords = function(){
+			var coords = {
+				// liczba kolumny * 1/2 szerokości wystrzelonej kulki + połowa wymiaru kulki, aby uzyskać środek
+				left : that.getCol() * BubbleShoot.ui.BUBBLE_DIMS/2 +
+				BubbleShoot.ui.BUBBLE_DIMS/2,
+				// numer rzędu * wysokość rzędu + jw.
+				top : that.getRow() * BubbleShoot.ui.ROW_HEIGHT + BubbleShoot.
+					ui.BUBBLE_DIMS/2
+			};
+			return coords;
+		}
 	};
 	Bubble.create = function(rowNum, colNum, type){
 		if (type === undefined) {

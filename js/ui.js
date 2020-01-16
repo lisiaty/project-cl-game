@@ -37,7 +37,16 @@ BubbleShoot.ui = (function($){
 			},
 			{
 				duration : duration,
-				easing :"linear"
+				easing :"linear",
+				complete : function(){
+					// sprawdzenie czy była kolizja
+					if(bubble.getRow() !== null){
+						bubble.getSprite().css({
+							left : bubble.getCoords().left - ui.BUBBLE_DIMS/2,
+							top : bubble.getCoords().top - ui.BUBBLE_DIMS/2
+						});
+					};
+				}
 			});
 		},
 		drawBoard : function(board){
@@ -61,7 +70,7 @@ BubbleShoot.ui = (function($){
 			};
 		},
 		drawBubblesRemaining : function(numBubbles){
-			$("#bubbles_remaining").text(numBubbles);
+			$("#bubbles_remaining").text(numBubbles); //wyświetlenie kulek
 		}
 	};
 	return ui;
