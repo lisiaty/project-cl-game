@@ -6,7 +6,7 @@ BubbleShoot.Game = (function($){
 		var numBubbles;
 		var bubbles = []; // tablica z kulkami w grze
 		var MAX_BUBBLES = 70; // Liczba kulek
-		var POINTS_PER_BUBBLE = 50; // Punkty za każdą zbitą kulkę
+		var POINTS_PER_BUBBLE = 1; // Punkty za każdą zbitą kulkę
 		var level = 0; // aktywny poziom gracza
 		var score = 0; // aktualny wynik
 		var endScore = 0; // wynik do wyświetlenia w oknie końcowym
@@ -120,11 +120,18 @@ BubbleShoot.Game = (function($){
 				highScore = score;
 				$("#newHighScore").show();
 				BubbleShoot.ui.drawHighScore(highScore);
+
+				
+				
+			
+
+
 				if(window.localStorage){
 					localStorage.setItem("highScore",highScore);
 				}
 			}else{
 				$("#newHighScore").hide();
+				
 			};
 			if(hasWon){
 				level++;
@@ -134,6 +141,7 @@ BubbleShoot.Game = (function($){
 			};
 			$(".butStartGame").click("click",startGame);
 			$("#board .bubble").remove();
+			
 			BubbleShoot.ui.endGame(hasWon,score, endScore);
 		};
 

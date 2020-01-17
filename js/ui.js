@@ -2,7 +2,7 @@ var BubbleShoot = window.BubbleShoot || {};
 BubbleShoot.ui = (function($){
 	var ui = {
 		BUBBLE_DIMS : 44,
-		ROW_HEIGHT : 35, //40
+		ROW_HEIGHT : 40, //40
 		init : function(){
 		},
 		hideDialog : function(){
@@ -79,6 +79,7 @@ BubbleShoot.ui = (function($){
 		},
 		// wyświetlanie rekordu
 		drawHighScore : function(highScore){
+		
 			$("#highScore").text(highScore);
 		},
 
