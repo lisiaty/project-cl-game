@@ -21,6 +21,20 @@ body {
 	color: #fff;
 }
 
+.topBarBox
+{
+	font-size: 24px;
+	line-height: 60px;
+	float: left;
+	margin-left:20px;
+	width: 250px;
+}
+.topBarBox div
+{
+	float: left;
+	margin-right: 20px;
+}
+
 #game {
 	position: absolute;
 	left: 0px;
@@ -106,4 +120,19 @@ body {
 	font-weight: bold;
 	color: #DC4E00;
 	text-align: center;
+}
+
+#finalScore
+{
+	margin: 26px 0;
+}
+#endGameMessage span
+{
+	margin-right: 20px;
+	font-size: 24px;
+}
+#levelComplete,#levelFailed,#newHighScore,#finalScore,#finalScoreValue
+{
+	font-size: 36px;
+	color: #DC4E00;
 }

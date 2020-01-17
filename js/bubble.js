@@ -20,6 +20,27 @@ BubbleShoot.Bubble = (function($){
 			};
 			return coords;
 		}
+		//Animacja rozwalenia kulki
+		this.animatePop = function(){
+			var top = type * that.getSprite().height(); // sprawdzanie z jaką kulką pracujemy, aby wybrać odpowiednie tło do wybuchu
+			this.getSprite().css(Modernizr.prefixed("transform"),"rotate(" + (Math.
+				random() * 360) + "deg)"); // animacja
+			// opóźnienie każdej kolejnej klatki animacji i przesuwamy obrazek w lewo
+			setTimeout(function(){
+				that.getSprite().css("background-position","-50px -" + top + "px");
+			},125);
+			setTimeout(function(){
+				that.getSprite().css("background-position","-100px -" + top + "px");
+			},150);
+			setTimeout(function(){
+				that.getSprite().css("background-position","-150px -" + top + "px");
+			},175);
+			setTimeout(function(){
+				that.getSprite().remove(); // usunięcie kulki z DOM
+			},200);
+		};
+
+
 	};
 	Bubble.create = function(rowNum, colNum, type){
 		if (type === undefined) {

@@ -2,7 +2,7 @@ var BubbleShoot = window.BubbleShoot || {};
 BubbleShoot.ui = (function($){
 	var ui = {
 		BUBBLE_DIMS : 44,
-		ROW_HEIGHT : 40,
+		ROW_HEIGHT : 35, //40
 		init : function(){
 		},
 		hideDialog : function(){
@@ -49,6 +49,7 @@ BubbleShoot.ui = (function($){
 				}
 			});
 		},
+		// rysowanie planszy
 		drawBoard : function(board){
 			var rows = board.getRows();
 			var gameArea = $("#board");
@@ -71,6 +72,35 @@ BubbleShoot.ui = (function($){
 		},
 		drawBubblesRemaining : function(numBubbles){
 			$("#bubbles_remaining").text(numBubbles); //wyświetlenie kulek
+		},
+		// wyświetlanie punktów
+		drawScore : function(score){
+			$("#score").text(score);
+		},
+		// wyświetlanie rekordu
+		drawHighScore : function(highScore){
+			$("#highScore").text(highScore);
+		},
+
+		// wyświetlanie poziomu
+		drawLevel : function(level){
+			$("#level").text(level+1);
+		},
+		// wyświetlenie końca gry
+		endGame : function(hasWon,score, endScore){
+			$("#game").unbind("click");
+			$("#game").unbind("mousemove");
+			BubbleShoot.ui.drawBubblesRemaining(0);
+			if(hasWon){
+				$(".levelComplete").show();
+				$(".levelFailed").hide();
+			}else{
+				$(".levelComplete").hide();
+				$(".levelFailed").show();
+			};
+			$("#endGame").fadeIn(500);
+			
+			$("#finalScoreValue").text(endScore);
 		}
 	};
 	return ui;

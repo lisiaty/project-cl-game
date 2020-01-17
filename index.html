@@ -34,7 +34,20 @@
 </head>
 <body>
   <div id="page">
-	  <div id="topBar"></div>
+	  <div id="topBar">
+		<div id="topLevelBox" class="topBarBox">
+			<div id="topLevelLabel">Poziom:</div>
+			<div id="level">1</div>
+		</div>
+		<div class="topBarBox">
+			<div id="topScoreLabel">Wynik:</div>
+			<div id="score">0</div>
+		</div>
+		<div class="topBarBox">
+			<div id="topScoreLabel">Najwyższy wynik:</div>
+			<div id="highScore">0</div>
+		</div>
+	  </div>
 	  <div id="game">
 		  <div id="board"></div>
 		  <div id="bubbles_remaining"></div>
@@ -46,6 +59,23 @@
 		  </div>
 		  <div class="butStartGame button">
 			  Nowa gra
+		  </div>
+	  </div>
+	  <div id="endGame" class="dialog">
+		<div id="endGameMessage">
+			  <h2>Koniec gry</h2>
+			  <div id="finalScore">
+			 	<span>Wynik:</span>
+				  <span id="finalScoreValue"></span>
+				 
+		 	 </div>
+			<div id="newHighScore">Nowy najwyższy wynik!</div>
+			  	<div id="levelFailed" class="levelFailed">Poziom nieudany!</div>
+			 	 <div id="levelComplete" class="levelComplete">Poziom zakończony!</div>
+			</div>
+			<div class="butStartGame button">
+			  <span class="levelComplete">Następny poziom</span>
+			  <span class="levelFailed">Nowa gra</span>
 		  </div>
 	  </div>
   </div>
