@@ -5,18 +5,46 @@ BubbleShoot.Game = (function($){
 		var board;
 		var numBubbles;
 		var bubbles = []; // tablica z kulkami w grze
-		var MAX_BUBBLES = 70; // Liczba kulek
+		var MAX_BUBBLES = 90; // Liczba kulek
 		var POINTS_PER_BUBBLE = 1; // Punkty za każdą zbitą kulkę
 		var level = 0; // aktywny poziom gracza
 		var score = 0; // aktualny wynik
 		var endScore = 0; // wynik do wyświetlenia w oknie końcowym
 		var highScore = 0; // najwyższy wynik
+		var name = "anonim";
+		var value = 0;
+		var newName = "";
+		$.ajax({
+			url: 'http://localhost:3001/highscore',
+			data: {value, newName},
+			type: "GET",
+			
+			
+			}).done(function(data){
+				
+				name = data.newName;
+			
+				data = data.value;
+				
+			  $("#highScore").text(data + " (" + name + ")");
+			  highScore = data;
+			  name = data.newName;
+			}).fail(function(error) {
+				console.log('error');
+			});
+		
+
 		var MAX_ROWS = 11; // dozwolona liczba zajętych wierszy
 		this.init = function(){
 			$(".butStartGame").bind("click",startGame);
 		};
 		var startGame = function(){
+			name = document.querySelector("#inputName").value;
+			$("#name").text(name);
+
 			$(".butStartGame").unbind("click");
+
+
 			numBubbles = MAX_BUBBLES - level*5; // początek gry/poziomu, za każdym poziomem punktów 5 mniej
 			BubbleShoot.ui.hideDialog();
 			curBubble = getNextBubble();
@@ -53,6 +81,22 @@ BubbleShoot.Game = (function($){
 				if(group.list.length >= 3){
 					// sprawdzenie  czy powstały nowe sieroty
 					popBubbles(group.list,duration); // czy nie zostały nowe osierocone kulki
+
+					// Sprawdzenie czy zostało tylko 5 kulek
+					var topRow = board.getRows()[0];
+					var topRowBubbles = [];
+					for(var i=0;i<topRow.length;i++){
+						if(topRow[i])
+							topRowBubbles.push(topRow[i]);
+					};
+					if(topRowBubbles.length <= 5){
+						popBubbles(topRowBubbles,duration);
+						group.list.concat(topRowBubbles);
+					};
+
+
+
+
 					var orphans = board.findOrphans(); // pobranie osieroconych kulek
 					var delay = duration + 200 + 30 * group.list.length; // obliczamy opóźnienie
 					dropBubbles(orphans,delay); // medoda powodująca usunięcie sierot
@@ -116,19 +160,43 @@ BubbleShoot.Game = (function($){
 		// wyświetlenie końca gry
 		var endGame = function(hasWon){
 			endScore = score;
+
+		
+			
+
 			if(score > highScore){
-				highScore = score;
+		
+
+				value = score;
+				var newName = name;
 				$("#newHighScore").show();
 				BubbleShoot.ui.drawHighScore(highScore);
 
 				
+
+
 				
-			
+				$.ajax({
+					url: 'http://localhost:3001/highscore',
+					
+					data: {value, newName},
+					type: "PUT",
+					
+					
+					}).done(function(data){
+					  data = value;
+					  
+					  
+					  $("#highScore").text(data + " (" + name + ")");
+					  highScore = data;
+					 
+				
+					}).fail(function(error) {
+						console.log('error');
+					});
 
 
-				if(window.localStorage){
-					localStorage.setItem("highScore",highScore);
-				}
+				
 			}else{
 				$("#newHighScore").hide();
 				

@@ -88,7 +88,7 @@ BubbleShoot.ui = (function($){
 			$("#level").text(level+1);
 		},
 		// wyświetlenie końca gry
-		endGame : function(hasWon,score, endScore){
+		endGame : function(hasWon,score, endScore, name){
 			$("#game").unbind("click");
 			$("#game").unbind("mousemove");
 			BubbleShoot.ui.drawBubblesRemaining(0);

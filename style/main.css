@@ -3,6 +3,8 @@ body {
 	font-family: 'Orbitron', sans-serif;
 }
 
+
+
 #page {
 	position: absolute;
 	left: 0;
@@ -70,6 +72,10 @@ body {
 	color: #4d4e50;
 
 }
+
+#name {
+	font-weight: bold;
+}
 .dialog
 {
 	position: absolute;
@@ -91,6 +97,13 @@ body {
 	color: #4d4e50;
 	margin: 20px 0 20px;
 }
+
+
+#inputName {
+	font-size: 24px;
+	color: #4d4e50;
+}
+
 .butStartGame
 {
 	position: absolute;
